@@ -48,67 +48,54 @@ function createMarkerHTML(event: Event): string {
       cursor: pointer;
       user-select: none;
     ">
-      <!-- 신발 아이콘 원형 배지 -->
-      <div style="
-        width: 38px;
-        height: 38px;
-        background: #ffffff;
-        border: 2.5px solid ${borderColor};
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.25);
-      ">
-        <!-- 러닝화 SVG (iStock 스타일 - 선명한 측면 실루엣) -->
-        <svg width="26" height="22" viewBox="0 0 26 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- 아웃솔 (고무 밑창) -->
-          <path d="M1.5 15.5 Q1.5 18 4 18 L21.5 18 Q24.5 18 24.5 16 Q24.5 15 22 15 L2 15 Z"
-                fill="rgba(0,0,0,0.45)"/>
-          <!-- 미드솔 (쿠션층) -->
-          <rect x="2" y="13.5" width="21.5" height="2" rx="0.8" fill="rgba(0,0,0,0.15)"/>
-          <!-- 어퍼 메인 (지역 색상) -->
-          <path d="M3 13.5
-                   C2.2 13.5 1.2 13 1.5 11.5
-                   C1.8 10 3.5 9 5 9.5
-                   C6 9.8 7.8 11.2 9.5 12.2
-                   C11.5 13.2 15.5 13.5 22.5 13.5
-                   C23.5 13.5 23.5 12.5 23 11.5
-                   C22.2 10 20.5 9 18.5 9
-                   L16.5 9
-                   C15.7 9 15.2 9.5 14.7 10.3
-                   C13 8.2 10.8 7.1 8.2 7.4
-                   C5.8 7.7 3.8 8.6 3 10 Z"
-                fill="${shoeColor}"/>
-          <!-- 어퍼 테두리 -->
-          <path d="M3 13.5
-                   C2.2 13.5 1.2 13 1.5 11.5
-                   C1.8 10 3.5 9 5 9.5
-                   C6 9.8 7.8 11.2 9.5 12.2
-                   C11.5 13.2 15.5 13.5 22.5 13.5
-                   C23.5 13.5 23.5 12.5 23 11.5
-                   C22.2 10 20.5 9 18.5 9
-                   L16.5 9
-                   C15.7 9 15.2 9.5 14.7 10.3
-                   C13 8.2 10.8 7.1 8.2 7.4
-                   C5.8 7.7 3.8 8.6 3 10 Z"
-                fill="none" stroke="rgba(0,0,0,0.3)" stroke-width="0.5"/>
-          <!-- 토캡 (앞코 강조) -->
-          <path d="M3 13.5 C2.2 13.5 1.2 13 1.5 11.5 C1.8 10 3.5 9 5 9.5 L5.3 10.3 L3.5 13.5 Z"
-                fill="rgba(0,0,0,0.18)"/>
-          <!-- 힐 카운터 (뒤꿈치 보강) -->
-          <path d="M20.5 9 L22 9.5 Q24 11 23.5 13 L22.5 13.5 L19.5 13.5 L20.5 11.5 Z"
-                fill="rgba(0,0,0,0.12)"/>
-          <!-- 사이드 스트라이프 (스우시 스타일) -->
-          <path d="M7.5 11.8 C10 9.6 13.5 10.2 15 12.8"
-                stroke="rgba(255,255,255,0.85)" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-          <!-- 레이스 (신발끈) -->
-          <line x1="11" y1="9.3" x2="14.5" y2="10.3" stroke="rgba(255,255,255,0.75)" stroke-width="0.95" stroke-linecap="round"/>
-          <line x1="10.5" y1="10.9" x2="14" y2="11.9" stroke="rgba(255,255,255,0.55)" stroke-width="0.95" stroke-linecap="round"/>
-          <!-- 상태 도트 -->
-          <circle cx="22" cy="4.5" r="3" fill="${borderColor}" stroke="white" stroke-width="1.3"/>
-        </svg>
-      </div>
+      <!-- 러닝화 SVG (iStock 스타일 - 선명한 측면 실루엣) -->
+      <svg width="36" height="30" viewBox="0 0 26 22" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
+        <!-- 아웃솔 (고무 밑창) -->
+        <path d="M1.5 15.5 Q1.5 18 4 18 L21.5 18 Q24.5 18 24.5 16 Q24.5 15 22 15 L2 15 Z"
+              fill="rgba(0,0,0,0.55)"/>
+        <!-- 미드솔 (쿠션층) -->
+        <rect x="2" y="13.5" width="21.5" height="2" rx="0.8" fill="rgba(0,0,0,0.18)"/>
+        <!-- 어퍼 메인 (지역 색상) -->
+        <path d="M3 13.5
+                 C2.2 13.5 1.2 13 1.5 11.5
+                 C1.8 10 3.5 9 5 9.5
+                 C6 9.8 7.8 11.2 9.5 12.2
+                 C11.5 13.2 15.5 13.5 22.5 13.5
+                 C23.5 13.5 23.5 12.5 23 11.5
+                 C22.2 10 20.5 9 18.5 9
+                 L16.5 9
+                 C15.7 9 15.2 9.5 14.7 10.3
+                 C13 8.2 10.8 7.1 8.2 7.4
+                 C5.8 7.7 3.8 8.6 3 10 Z"
+              fill="${shoeColor}"/>
+        <!-- 어퍼 테두리 -->
+        <path d="M3 13.5
+                 C2.2 13.5 1.2 13 1.5 11.5
+                 C1.8 10 3.5 9 5 9.5
+                 C6 9.8 7.8 11.2 9.5 12.2
+                 C11.5 13.2 15.5 13.5 22.5 13.5
+                 C23.5 13.5 23.5 12.5 23 11.5
+                 C22.2 10 20.5 9 18.5 9
+                 L16.5 9
+                 C15.7 9 15.2 9.5 14.7 10.3
+                 C13 8.2 10.8 7.1 8.2 7.4
+                 C5.8 7.7 3.8 8.6 3 10 Z"
+              fill="none" stroke="rgba(0,0,0,0.35)" stroke-width="0.5"/>
+        <!-- 토캡 (앞코 강조) -->
+        <path d="M3 13.5 C2.2 13.5 1.2 13 1.5 11.5 C1.8 10 3.5 9 5 9.5 L5.3 10.3 L3.5 13.5 Z"
+              fill="rgba(0,0,0,0.18)"/>
+        <!-- 힐 카운터 (뒤꿈치 보강) -->
+        <path d="M20.5 9 L22 9.5 Q24 11 23.5 13 L22.5 13.5 L19.5 13.5 L20.5 11.5 Z"
+              fill="rgba(0,0,0,0.12)"/>
+        <!-- 사이드 스트라이프 (스우시 스타일) -->
+        <path d="M7.5 11.8 C10 9.6 13.5 10.2 15 12.8"
+              stroke="rgba(255,255,255,0.9)" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+        <!-- 레이스 (신발끈) -->
+        <line x1="11" y1="9.3" x2="14.5" y2="10.3" stroke="rgba(255,255,255,0.75)" stroke-width="0.95" stroke-linecap="round"/>
+        <line x1="10.5" y1="10.9" x2="14" y2="11.9" stroke="rgba(255,255,255,0.55)" stroke-width="0.95" stroke-linecap="round"/>
+        <!-- 상태 도트 -->
+        <circle cx="22" cy="4.5" r="3" fill="${borderColor}" stroke="white" stroke-width="1.3"/>
+      </svg>
       <!-- 핀 꼬리 -->
       <div style="
         width: 2px;
