@@ -110,7 +110,7 @@ export default function CalendarPage() {
       <div className="grid grid-cols-7 gap-px bg-gray-100 rounded-2xl overflow-hidden shadow-sm">
         {/* 앞 공백 */}
         {Array.from({ length: firstDay }).map((_, i) => (
-          <div key={`blank-${i}`} className="bg-white h-16" />
+          <div key={`blank-${i}`} className="bg-white h-14 sm:h-16" />
         ))}
 
         {/* 날짜 셀 */}
@@ -129,26 +129,26 @@ export default function CalendarPage() {
             <button
               key={dateStr}
               onClick={() => setSelectedDate(isSelected ? null : dateStr)}
-              className={`bg-white h-16 flex flex-col items-center pt-2 gap-1 transition-colors relative
+              className={`bg-white h-14 sm:h-16 flex flex-col items-center pt-1.5 sm:pt-2 gap-0.5 sm:gap-1 transition-colors relative
                 ${isSelected ? 'bg-red-50' : 'hover:bg-gray-50'}
                 ${dow === 0 ? 'text-red-500' : dow === 6 ? 'text-blue-500' : 'text-gray-800'}`}
             >
               <span
-                className={`text-sm font-semibold w-7 h-7 flex items-center justify-center rounded-full
+                className={`text-xs sm:text-sm font-semibold w-6 h-6 sm:w-7 sm:h-7 flex items-center justify-center rounded-full
                   ${isToday ? 'bg-[#FF5A5F] text-white' : ''}`}
               >
                 {day}
               </span>
               {dayEvents.length > 0 && (
-                <div className="flex items-center gap-0.5 flex-wrap justify-center px-1">
-                  {dayEvents.slice(0, 3).map((evt) => (
+                <div className="flex items-center gap-0.5 flex-wrap justify-center px-0.5">
+                  {dayEvents.slice(0, 2).map((evt) => (
                     <span
                       key={evt.id}
                       className={`w-1.5 h-1.5 rounded-full ${STATUS_DOT[evt.registrationStatus]}`}
                     />
                   ))}
-                  {dayEvents.length > 3 && (
-                    <span className="text-[9px] text-gray-400 font-bold">+{dayEvents.length - 3}</span>
+                  {dayEvents.length > 2 && (
+                    <span className="text-[8px] sm:text-[9px] text-gray-400 font-bold">+{dayEvents.length - 2}</span>
                   )}
                 </div>
               )}

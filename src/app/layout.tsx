@@ -28,7 +28,7 @@ export default function RootLayout({
     <html lang="ko">
       <body className={`${notoSansKR.variable} font-sans antialiased bg-white`}>
         <Header />
-        {children}
+        <main className="pb-16 md:pb-0">{children}</main>
       </body>
     </html>
   );

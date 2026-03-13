@@ -288,7 +288,7 @@ export default function EventDetailModal() {
 
   const modalContent = (
     <div
-      className="fixed inset-0 bg-black/50 flex items-center justify-center p-4"
+      className="fixed inset-0 bg-black/50 flex items-end md:items-center justify-center md:p-4"
       style={{ zIndex: 9999 }}
       onClick={close}
     >
@@ -297,11 +297,13 @@ export default function EventDetailModal() {
         role="dialog"
         aria-modal="true"
         aria-label={`${event.name} 상세 정보`}
-        className="w-full max-w-2xl max-h-[90vh] bg-white shadow-2xl rounded-2xl flex flex-col"
+        className="w-full md:max-w-2xl h-[92svh] md:h-auto md:max-h-[90vh] bg-white shadow-2xl rounded-t-3xl md:rounded-2xl flex flex-col animate-slide-up md:animate-popup"
         onClick={(e) => e.stopPropagation()}
       >
         {/* ─── 헤더 ─── */}
-        <div className="px-5 pt-5 pb-4 border-b border-gray-100">
+        <div className="px-5 pt-4 md:pt-5 pb-4 border-b border-gray-100">
+          {/* 모바일 드래그 핸들 */}
+          <div className="md:hidden w-10 h-1 bg-gray-300 rounded-full mx-auto mb-4" />
           <div className="flex items-start justify-between gap-3">
             <h2 className="text-lg font-bold text-gray-900 leading-snug line-clamp-2 flex-1">
               {event.name}

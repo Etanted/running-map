@@ -55,3 +55,28 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #adb5bd;
 }
+
+/* iOS safe area 지원 */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* 모바일 터치 하이라이트 제거 */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 모바일에서 선택 방지 (지도 위 버튼 등) */
+.no-select {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* 모바일 모달 슬라이드업 */
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+.animate-slide-up {
+  animation: slideUp 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
