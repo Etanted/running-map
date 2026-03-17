@@ -34,7 +34,7 @@ const STATUS_BORDER: Record<string, string> = {
 };
 
 function createMarkerHTML(event: Event): string {
-  const shoeColor = REGION_COLOR[event.region] ?? '#E2E8F0';
+  const fillColor = REGION_COLOR[event.region] ?? '#E2E8F0';
   const borderColor = STATUS_BORDER[event.registrationStatus] ?? '#9ca3af';
   const coreName = event.name.replace(/^(제\d+회\s*|20\d\d\s+)/, '');
   const shortName = coreName.length > 10 ? coreName.slice(0, 10) + '…' : coreName;
@@ -48,68 +48,65 @@ function createMarkerHTML(event: Event): string {
       cursor: pointer;
       user-select: none;
     ">
-      <!-- 러닝화 SVG (측면 프로파일) -->
-      <svg width="52" height="38" viewBox="0 0 60 44" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0 2px 5px rgba(0,0,0,0.45));">
-        <!-- 아웃솔 -->
-        <path d="M3 30 Q2 35.5 6.5 36.5 L52 36.5 Q58.5 36.5 58.5 33 Q58.5 30.5 55 30 L4 30 Z" fill="#1a1a1a"/>
-        <!-- 미드솔 -->
-        <rect x="3.5" y="27" width="53" height="4" rx="1.5" fill="rgba(30,30,30,0.45)"/>
-        <!-- 어퍼 메인 -->
-        <path d="M4.5 27
-          C3.5 27 2.5 25.5 3 23.5
-          C3.5 21.5 6.5 19.5 10 20.5
-          C12.5 21.2 15.5 23.5 18.5 25
-          C22 26.5 27 27.5 50 27.5
-          C53 27.5 54 26 53.5 23.5
-          C52.5 21 49 19.5 46 19.5
-          L41.5 19.5
-          C40 19.5 39.5 20.5 38 23
-          C34.5 19.5 29.5 17.5 23.5 18
-          C17.5 18.5 10.5 21.5 7.5 25
-          C6 26.2 5 27 4.5 27 Z"
-          fill="${shoeColor}" stroke="rgba(0,0,0,0.28)" stroke-width="0.7"/>
-        <!-- 혀 (Tongue) -->
-        <path d="M36 17 L41.5 17 Q43 17 41.5 19.5 L38 23 L34.5 19.5 Z"
-          fill="${shoeColor}" stroke="rgba(0,0,0,0.22)" stroke-width="0.5"/>
-        <!-- 토캡 -->
-        <path d="M3 23.5 C2.5 21.5 5.5 19 9.5 20 L10 22 L5.5 27 C3.5 27 2.5 25.5 3 23.5 Z"
-          fill="rgba(0,0,0,0.18)"/>
-        <!-- 힐 카운터 -->
-        <path d="M46 19.5 L50 21 Q54.5 23.5 54 27 L52 27.5 L47.5 27.5 L48.5 22.5 Z"
-          fill="rgba(0,0,0,0.13)"/>
-        <!-- 스우시 스트라이프 -->
-        <path d="M13 25.5 C21 21 33.5 22 37 27"
-          stroke="rgba(255,255,255,0.92)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-        <!-- 신발끈 1 -->
-        <line x1="27" y1="18.5" x2="36" y2="20.2" stroke="rgba(255,255,255,0.82)" stroke-width="1.2" stroke-linecap="round"/>
-        <!-- 신발끈 2 -->
-        <line x1="26.5" y1="21.5" x2="35.5" y2="23.2" stroke="rgba(255,255,255,0.52)" stroke-width="1.2" stroke-linecap="round"/>
-        <!-- 상태 도트 -->
-        <circle cx="54" cy="7" r="5" fill="${borderColor}" stroke="white" stroke-width="1.7"/>
-      </svg>
+      <!-- 원형 마커 -->
+      <div style="
+        width: 36px;
+        height: 36px;
+        background: ${fillColor};
+        border: 2.5px solid ${borderColor};
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.22), inset 0 1px 2px rgba(255,255,255,0.55);
+        position: relative;
+      ">
+        <!-- 러닝 픽토그램 SVG -->
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- 머리 -->
+          <circle cx="15" cy="3.5" r="2" fill="rgba(0,0,0,0.65)"/>
+          <!-- 몸통 + 팔 + 다리 (달리는 자세) -->
+          <path d="M12.5 6.5 L10 12 L6.5 15.5" stroke="rgba(0,0,0,0.65)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <path d="M12.5 6.5 L14.5 11.5 L18 13.5" stroke="rgba(0,0,0,0.65)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <path d="M10 12 L11.5 16.5 L9 20.5" stroke="rgba(0,0,0,0.65)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <path d="M14.5 11.5 L13 16 L15.5 19.5" stroke="rgba(0,0,0,0.65)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+        <!-- 상태 도트 (우상단) -->
+        <div style="
+          position: absolute;
+          top: -3px;
+          right: -3px;
+          width: 10px;
+          height: 10px;
+          background: ${borderColor};
+          border: 1.5px solid white;
+          border-radius: 50%;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+        "></div>
+      </div>
       <!-- 핀 꼬리 -->
       <div style="
         width: 2px;
-        height: 5px;
-        background: ${borderColor};
+        height: 6px;
+        background: linear-gradient(to bottom, ${borderColor}, rgba(0,0,0,0.15));
         border-radius: 0 0 2px 2px;
       "></div>
       <!-- 대회명 라벨 -->
       <div style="
         margin-top: 2px;
         background: rgba(255,255,255,0.97);
-        border: 1px solid #E9ECEF;
-        border-radius: 6px;
-        padding: 2px 7px;
-        font-size: 11px;
+        border: 1px solid rgba(0,0,0,0.08);
+        border-radius: 20px;
+        padding: 2px 8px;
+        font-size: 10.5px;
         font-weight: 700;
-        color: #111827;
+        color: #1a1a2e;
         white-space: nowrap;
-        max-width: 130px;
+        max-width: 120px;
         overflow: hidden;
         text-overflow: ellipsis;
-        box-shadow: 0 1px 4px rgba(0,0,0,0.13);
-        letter-spacing: -0.2px;
+        box-shadow: 0 1px 5px rgba(0,0,0,0.12);
+        letter-spacing: -0.3px;
       ">
         ${shortName}
       </div>
